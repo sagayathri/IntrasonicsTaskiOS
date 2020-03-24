@@ -27,15 +27,19 @@ class IntrasonicsTask_iOSTests: XCTestCase {
     
     func testIfNotValidNumber() {
         let str = "abc"
-        XCTAssert(vc.isNumeric(str: str), " \(str) is not a valid input")
+        XCTAssertFalse(vc.isNumeric(str: str), " \(str) is not a valid input")
     }
 
     func testPerformanceExample() {
         self.measure {
             let numbers = "-67, 0, 456, -43, 3, 99"
+            let listInOrder = [-67, -43, 0, 3, 99, 456]
             vc.rawNumberList = numbers
             let sortedList = vc.sortNumbers()
-            print(sortedList)
+            XCTAssert(sortedList.count == listInOrder.count)
+            for i in 0 ..< sortedList.count {
+                XCTAssert(sortedList[i] == listInOrder[i])
+            }
         }
     }
 }

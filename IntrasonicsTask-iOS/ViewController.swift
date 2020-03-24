@@ -32,6 +32,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     //Calculates Mean and Median
     func calculateMeanMedian() {
+        rawNumberList = numberListTF.text!
         let sortedList = sortNumbers()
         var mean = 0, median = 0, sum = 0;
         var finalListString: String = ""
@@ -85,7 +86,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     //Returns sorted array list
     func sortNumbers() -> [Int] {
-        rawNumberList = numberListTF.text!
         //Split given numbers separated by comma
         let numbersString = rawNumberList
         let numbersStringArray = numbersString.components(separatedBy: [" ", ","])
